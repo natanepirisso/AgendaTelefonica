@@ -4,4 +4,7 @@ public class Pessoa_juridica extends Pessoa{
         super(nome,telNumber);
         this.cnpj = cnpj;
     }
+    public String getDocument(){
+        return cnpj;
+    }
 }

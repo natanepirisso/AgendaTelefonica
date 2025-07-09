@@ -2,7 +2,7 @@ public abstract class Pessoa {
     public String nome;
     public int telNumber;
     public boolean disponibilidade;
-    public Pessoa(String nome, int telNumber){
+    public Pessoa(String nome, int telNumber) {
         this.nome = nome;
         this.telNumber = telNumber;
     }
@@ -14,4 +14,5 @@ public abstract class Pessoa {
             System.out.println("Status: indisponível");
         }
     }
+    public abstract String getDocument();
 }

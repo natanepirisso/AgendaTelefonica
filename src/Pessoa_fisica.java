@@ -4,4 +4,7 @@ public class Pessoa_fisica extends Pessoa {
         super(nome, telNumber);
         this.cpf = cpf;
     }
+    public String getDocument(){
+        return cpf;
+    }
 }

@@ -1,18 +1,52 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Agenda {
-    public static void main(String [] args){
-        Pessoa p1 = new Pessoa_fisica("Natan", 30322202,"123.456.789-10");
-        Pessoa p2 = new Pessoa_juridica("Balãozete LTDA", 96143230, "12.345.678/0001-95");
-        p1.disponibilidade = true;
-        p2.disponibilidade = false;
-        System.out.println("\n------------------- Agenda -----------------------\n\n");
-        Pessoa[] contatos = {p1,p2};
-        for(Pessoa contato : contatos){
-            contato.estaDisponivel();
-            System.out.println("Nome: " + contato.nome);
-            System.out.println("Número: " + contato.telNumber);
-            System.out.println("Documento: " + contato.getDocument());
-            System.out.println("\n---------------------");
+    public static void main(String [] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Pessoa> contatos = new ArrayList<>();
+        int options;
+        do {
+            System.out.println("------- Agenda Telefônica ------------\n");
+            System.out.println("Digite:");
+            System.out.println("1: Adicionar Contato");
+            System.out.println("2: Ler contatos");
+            System.out.println("3: Atualizar contato");
+            System.out.println("4: Remover contato");
+            System.out.println("0: Sair");
+            options = sc.nextInt();
+
+
+            switch (options) {
+                case 1:
+                    System.out.println("Nome:");
+                    String nome = sc.next();
+                    System.out.println("Telefone:");
+                    int tel = sc.nextInt();
+                    System.out.println("Pessoa fisica(1) ou jurídica(2)?");
+                    if(sc.nextInt() == 1){
+                        System.out.println("digite o CPF:");
+                        String cpf = sc.next();
+                        contatos.add(new Pessoa_fisica(nome, tel, cpf));
+                    }
+                    else{
+                        System.out.println("digite o CNPJ");
+                        String cnpj = sc.next();
+                        contatos.add(new Pessoa_juridica(nome,tel,cnpj));
+                    }
+                    System.out.println("Contato Adicionado!");
+                break;
+                case 2:
+                    System.out.println("----------- Lista de Contatos ---------------");
+                    for(Pessoa p : contatos){
+                        System.out.println("Nome: " + p.nome + " | Telefone: " + p.telNumber + " | Identidade: " + p.getDocument());
+                    }
+                    break;
+
+            }
+        }
+        while(options!= 0);{
+            sc.close();
         }
     }
 }

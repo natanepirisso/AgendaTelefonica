@@ -7,7 +7,7 @@ public abstract class Pessoa {
         this.telNumber = telNumber;
     }
     public void estaDisponivel(){
-        if (this.disponibilidade == true){
+        if (this.disponibilidade){
             System.out.println("Status: disponível");
         }
         else{

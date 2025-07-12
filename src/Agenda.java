@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Agenda {
@@ -42,7 +43,23 @@ public class Agenda {
                         System.out.println("Nome: " + p.nome + " | Telefone: " + p.telNumber + " | Identidade: " + p.getDocument());
                     }
                     break;
-
+                case 3:
+                    System.out.println("Digite o nome do contato que quer atualizar");
+                    String nomeEscolhido = sc.next();
+                    for(Pessoa p : contatos){
+                        if(Objects.equals(p.nome, nomeEscolhido)) {
+                            System.out.println("Contato encontrado. Qual o novo número de telefone?");
+                            p.telNumber = sc.nextInt();
+                            System.out.println("Contato Atualizado");
+                        }
+                    }
+                    break;
+                case 4:
+                    System.out.println("Qual o nome do contato que deseja excluir? Depois que digitar o nome, não tem mais volta.");
+                    String contactToBeDeleted = sc.next();
+                    contatos.removeIf( p -> p.nome.equals(contactToBeDeleted));
+                    System.out.println("Contato Excluido");
+                    break;
             }
         }
         while(options!= 0);{

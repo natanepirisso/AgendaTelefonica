@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -23,9 +24,16 @@ public class Agenda {
                     System.out.println("Nome:");
                     String nome = sc.next();
                     System.out.println("Telefone:");
-                    int tel = sc.nextInt();
-                    System.out.println("Pessoa fisica(1) ou jurídica(2)?");
-                    if(sc.nextInt() == 1){
+                    int tel;
+                    try{
+                        tel = sc.nextInt();
+
+                    }catch(InputMismatchException e){
+                        throw new IllegalArgumentException("Telefone invalido. Veja se está correto");
+                }
+                    System.out.println("Pessoa física (1) ou jurídica (2)?");
+                    int setEntidade =  InputUtils.getEntidade(sc);
+                    if(setEntidade == 1){
                         System.out.println("digite o CPF:");
                         String cpf = sc.next();
                         contatos.add(new Pessoa_fisica(nome, tel, cpf));

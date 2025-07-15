@@ -6,6 +6,7 @@ public abstract class Pessoa {
         this.nome = nome;
         this.telNumber = telNumber;
     }
+
     public void estaDisponivel(){
         if (this.disponibilidade){
             System.out.println("Status: disponível");
@@ -15,4 +16,5 @@ public abstract class Pessoa {
         }
     }
     public abstract String getDocument();
+
 }
